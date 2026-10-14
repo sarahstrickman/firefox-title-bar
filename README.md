@@ -2,7 +2,9 @@
 
 Replacement title bar for Firefox because native OS title bars are somewhat fugly. Intended to fit firefox themes, including animated/image backgrounds.
 
-| Without | With |
+Screenshots taken on Ubuntu, but also tested on Windows.
+
+| Standard | With |
 |---|---|
 | <img src="disabled-ubuntu.png" height="400"> | <img src="enabled.png" height="400"> |
 
