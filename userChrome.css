@@ -25,14 +25,15 @@
     background-size: auto, var(--lwt-background-size, auto);
   }
 
-  :root:not([sizemode="fullscreen"]) #navigator-toolbox::before {
+  :root:not([sizemode="fullscreen"]) #nav-bar::before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: var(--custom-titlebar-controls-width);
     height: var(--custom-titlebar-height);
     z-index: 1;
+    pointer-events: auto;
     -moz-window-dragging: drag;
   }
 
