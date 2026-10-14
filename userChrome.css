@@ -1,0 +1,133 @@
+@-moz-document url("chrome://browser/content/browser.xhtml") {
+  :root {
+    --custom-titlebar-height: 36px;
+    --custom-titlebar-controls-width: 108px;
+  }
+
+  :root:not([sizemode="fullscreen"]) #navigator-toolbox {
+    position: relative;
+    padding-top: var(--custom-titlebar-height) !important;
+  }
+
+  :root:not([sizemode="fullscreen"]) #navigator-toolbox::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--custom-titlebar-height);
+    z-index: 0;
+    pointer-events: none;
+    background-color: var(--lwt-accent-color, #263238);
+    background-image: var(--lwt-header-image, none), var(--lwt-additional-images, none);
+    background-position: right top, var(--lwt-background-alignment, right top);
+    background-repeat: no-repeat, var(--lwt-background-tiling, no-repeat);
+    background-size: auto, var(--lwt-background-size, auto);
+  }
+
+  :root:not([sizemode="fullscreen"]) #navigator-toolbox::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: var(--custom-titlebar-controls-width);
+    height: var(--custom-titlebar-height);
+    z-index: 1;
+    -moz-window-dragging: drag;
+  }
+
+  :root:not([sizemode="fullscreen"]) #nav-bar {
+    z-index: 2 !important;
+  }
+
+  :root:not([sizemode="fullscreen"]) #navigator-toolbox .titlebar-buttonbox-container {
+    display: none !important;
+  }
+
+  :root:not([sizemode="fullscreen"]) #nav-bar > .titlebar-buttonbox-container {
+    display: flex !important;
+    visibility: visible !important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: var(--custom-titlebar-height);
+    width: var(--custom-titlebar-controls-width);
+    margin: 0 !important;
+    z-index: 2;
+    pointer-events: auto !important;
+    background-color: transparent;
+    color: var(--lwt-text-color, white);
+    -moz-window-dragging: no-drag !important;
+  }
+
+  :root:not([sizemode="fullscreen"]) #nav-bar .titlebar-buttonbox {
+    display: flex !important;
+    appearance: none !important;
+    width: 100%;
+    height: 100%;
+  }
+
+  :root:not([sizemode="fullscreen"]) #nav-bar .titlebar-button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 36px !important;
+    min-width: 36px !important;
+    height: var(--custom-titlebar-height);
+    padding: 0 !important;
+    margin: 0 !important;
+    pointer-events: auto !important;
+    -moz-window-dragging: no-drag !important;
+  }
+
+  :root:not([sizemode="fullscreen"]) #nav-bar .titlebar-min {
+    order: 0 !important;
+  }
+
+  :root:not([sizemode="fullscreen"]) #nav-bar :is(.titlebar-max, .titlebar-restore) {
+    order: 1 !important;
+  }
+
+  :root:not([sizemode="fullscreen"]) #nav-bar .titlebar-close {
+    order: 2 !important;
+  }
+
+  :root:not([sizemode="maximized"], [sizemode="fullscreen"]) #nav-bar .titlebar-restore,
+  :root[sizemode="maximized"] #nav-bar .titlebar-max {
+    display: none !important;
+  }
+
+  :root:not([sizemode="fullscreen"]) :is(#TabsToolbar, #nav-bar) > hbox.titlebar-spacer {
+    display: none !important;
+  }
+
+  :root:not([sizemode="fullscreen"]) > head {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--custom-titlebar-height);
+    box-sizing: border-box;
+    padding-inline: calc(var(--custom-titlebar-controls-width) + 12px);
+    z-index: 10;
+    pointer-events: none;
+
+    background-color: transparent;
+    color: var(--lwt-text-color, white);
+  }
+
+  :root > head > * {
+    display: none !important;
+  }
+
+  :root:not([sizemode="fullscreen"]) > head > title {
+    display: block !important;
+    line-height: var(--custom-titlebar-height);
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
